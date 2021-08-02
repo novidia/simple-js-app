@@ -22,4 +22,20 @@ let pokemon = [
 
 ]
 
-console.log(pokemon)
+for (let i=0; i < pokemon.length; i++) {
+  if (pokemon[i].speed > 95) {
+     console.log(pokemon[i].name + " is one of the fast Psychic Pokemon.");
+  } else if (pokemon[i].speed < 75) {
+     console.log(pokemon[i].name + " is one of the slow Psychic Pokemon.");
+  } else {
+     console.log(pokemon[i].name + " is one of the Psychic Pokemon with average speed.");
+  }
+}
+
+for (let i=0; i < pokemon.length; i++) {
+  if (pokemon[i].speed < 75) {
+		document.write(`<p> ${pokemon[i].name} (speed: ${pokemon[i].speed}") - I am the slowest Psychic Pokemon on the list! </p>`);
+	} else {
+		document.write(`<p> ${pokemon[i].name} (speed: ${pokemon[i].speed}")</p>`);
+	}
+}
