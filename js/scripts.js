@@ -34,8 +34,8 @@ for (let i=0; i < pokemon.length; i++) {
 
 for (let i=0; i < pokemon.length; i++) {
   if (pokemon[i].speed < 75) {
-		document.write(`<p> ${pokemon[i].name} (speed: ${pokemon[i].speed}") - I am the slowest Psychic Pokemon on the list! </p>`);
-	} else {
-		document.write(`<p> ${pokemon[i].name} (speed: ${pokemon[i].speed}")</p>`);
-	}
+      document.write(`<p> ${pokemon[i].name} (speed: ${pokemon[i].speed}") - I am the slowest Psychic Pokemon on the list! </p>`);
+  } else {
+      document.write(`<p> ${pokemon[i].name} (speed: ${pokemon[i].speed}")</p>`);
+  }
 }
