@@ -1,4 +1,5 @@
-let pokemon = [
+let pokemonRepository = (function () {
+  let pokemon = [
 
 {name: 'Lunatone',
  speed: 70,
@@ -39,3 +40,21 @@ for (let i=0; i < pokemon.length; i++) {
       document.write(`<p> ${pokemon[i].name} (speed: ${pokemon[i].speed}")</p>`);
   }
 }
+
+pokemon.forEach(function(pokemon) {
+  console.log(pokemon.name + ' is ' + pokemon.types + ' pokemon.');
+});
+
+  function add(pokemon) {
+    pokemon.push(pokemon);
+  }
+
+  function getAll() {
+    return pokemon;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+})();
