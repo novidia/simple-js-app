@@ -20,30 +20,49 @@ let pokemonRepository = (function () {
 {name: 'Jirachi',
  speed: 100,
  types: ['psychic', 'steel']}
-
 ]
 
 pokemon.forEach(function(pokemon) {
   console.log(pokemon.name + ' is ' + pokemon.types + ' pokemon.');
 });
 
-  function add(pokemon) {
-    pokemon.push(pokemon);
-  }
+function addListItem(pokemon){
+  let list = document.querySelector('.pokemon-list');
+  let listItem = document.createElement ('li');
+  let button = document.createElement('button');
+  button.innerText = pokemon.name;
+  button.classList.add('button');
+  listItem.appendChild(button);
+  list.appendChild(listItem);
+    button.addEventListener('click', function(pokemon){
+      showDetails(pokemon);
+  });
+}
 
-  function getAll() {
-    return pokemon;
-  }
+function showDetails(pokemon){
+  console.log(pokemon);
+}
 
-  return {
-    add: add,
-    getAll: getAll
+function add(pokemon){
+  pokemon.push(pokemon);
+}
+
+function getAll() {
+  return pokemon;
+}
+
+function removeLast() {
+  pokemonList.pop();
+}
+
+return {
+  add: add,
+  getAll: getAll,
+  removeLast:removeLast,
+  addListItem: addListItem
   };
 })();
 
-pokemonRepository.getAll().forEach(function(pokemon) {
-const poke = `<div>${pokemon.name} is ${pokemon.types} pokemon</div>`
-document.write (poke)
-console.log (poke);
-
-});
+pokemonRepository.getAll().forEach(function(pokemon){
+pokemonRepository.addListItem(pokemon);
+})
