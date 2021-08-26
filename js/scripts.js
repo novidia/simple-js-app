@@ -58,11 +58,61 @@ let pokemonRepository = (function () {
     });
   }
 
-  function showDetails(item) {
-    pokemonRepository.loadDetails(item).then(function () {
-      console.log(item);
+   function showDetails(pokemonToShow) {
+    pokemonRepository.loadDetails(pokemonToShow).then(function () {
+      showModal(pokemonToShow);
     });
   }
+
+function showModal(title, text) {
+  let modalContainer = document.querySelector('#modal-container');
+
+
+  modalContainer.innerHTML = '';
+
+  let modal = document.createElement('div');
+  modal.classList.add('modal');
+
+  let closeButtonElement = document.createElement('button');
+  closeButtonElement.classList.add('modal-close');
+  closeButtonElement.innerText = 'X';
+  closeButtonElement.addEventListener('click', hideModal);
+
+  window.addEventListener('keydown', (e) => {
+  let modalContainer = document.querySelector('#modal-container');
+  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+    hideModal();  
+  }
+});
+
+  let titleElement = document.createElement('h1');
+  titleElement.innerText = title;
+
+  let contentElement = document.createElement('p');
+  contentElement.innerText = text;
+
+  modal.appendChild(closeButtonElement);
+  modal.appendChild(titleElement);
+  modal.appendChild(contentElement);
+  modalContainer.appendChild(modal);
+
+  modalContainer.classList.add('is-visible');
+
+  let container = document.querySelector('#image-container');
+  let myImage = document.createElement('img');
+  myImage.src = 'https://picsum.photos/300/300';
+
+container.appendChild(myImage);
+}
+
+document.querySelector('#show-modal').addEventListener('click', () => {
+  showModal('pokemon.Name', 'pokemon.types');
+});
+
+function hideModal() {
+  let modalContainer = document.querySelector('#modal-container');
+  modalContainer.classList.remove('is-visible');
+}
 
   return {
     add: add,
@@ -70,7 +120,9 @@ let pokemonRepository = (function () {
     addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails
+    showDetails: showDetails,
+    showModal: showModal,
+    hideModal: hideModal
   };
 })();
 
@@ -80,20 +132,9 @@ pokemonRepository.loadList().then(function () {
   });
 });
 
-let count = 1;
-function increaseCount() {
-   count = count + 1;
-}
-
-setTimeout(function () {
-  console.log('first call', count);
-  increaseCount();
-}, 200);
-setTimeout(function () {
-  console.log('second call', count);
-  increaseCount();
-}, 100);
-setTimeout(function () { 
-  console.log('third call', count);
-  increaseCount();
-}, 500);
+modalContainer.addEventListener('click', (e) => {
+  let target = e.target;
+  if (target === modalContainer) {
+    hideModal();
+  }
+});
