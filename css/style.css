@@ -1,8 +1,9 @@
 :root {
   --primary-color: #E0EFF5;
   --secondary-color: #95c7dd;
-  --tertiary-color: #f7c93d;
+  --tertiary-color: #FADE89;
   --primary-text-color:#30589b;
+  --secondary-text-color: #3c84ac;
   --h1-font-size: 65px;
   --h2-font-size: 45px;
   --h3-font-size: 25px;
@@ -59,7 +60,7 @@ ul {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 65%;
   z-index: 999; 
   overflow: auto; 
   display: grid;
@@ -71,12 +72,12 @@ ul {
   display: inline-block;
   box-sizing: border-box;
   background: var(--tertiary-color);
+  color: var(--secondary-text-color);
   width: 35%;
   height: 65%;
   text-align: center;
   font-size: 15px;
   position: absolute;
-  float: left;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -87,6 +88,7 @@ ul {
   border: 0;
   background: none;
   color: #30589b;
+  text-align: center;
 }
 
 .modal h1 {
