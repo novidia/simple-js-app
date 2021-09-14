@@ -1,1 +1,1 @@
-# simple-js-app
+This is a Simple JavaScript App, a Pokemon Index that shows the details of the Pokemon in the database from external API: the height, the weight, the types, and the abilities of the Pokemon. The App is built with JavaScript, CSS, and HTML. There are 200 Pokemon in the app.
